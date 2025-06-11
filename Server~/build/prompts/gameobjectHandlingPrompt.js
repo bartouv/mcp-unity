@@ -18,6 +18,7 @@ export function registerGameObjectHandlingPrompt(server) {
 When working directly with GameObjects or any of their components in Unity scenes, you have access to the following resources and tools:
 - Resource "get_scenes_hierarchy" (unity://scenes_hierarchy) to list all GameObjects.
 - Resource "get_gameobject" (unity://gameobject/{id}) to fetch detailed GameObject info, with the id being the name of the GameObject or the path to the GameObject.
+- Resource "get_scripts" (unity://scripts) to access and analyze C# script files in the project with optional filters.
 - Tool "select_gameobject" to select a GameObject by ID or path.
 - Tool "update_gameobject" to update a GameObject's core properties (name, tag, layer, active state, static state), or create the GameObject if it does not exist.
 - Tool "update_component" to update or add a component on a GameObject, including common frequently used components (e.g. Transform, RectTransform, BoxCollider, Rigidbody, etc).
@@ -27,12 +28,17 @@ Workflow:
 2. If you need to update the GameObject's core properties (name, tag, layer, active state, static state), or create the GameObject if it does not exist, use "update_gameobject".
 3. To focus the Unity Editor on the target GameObject, invoke "select_gameobject".
 4. Optionally, use "unity://gameobject/${gameObjectId}" to retrieve detailed properties.
-5. To update or add a component on the GameObject, use "update_component".
-6. Confirm success and report any errors.
+5. To access C# scripts related to this GameObject or its components, use "get_scripts" with appropriate filters.
+6. To update or add a component on the GameObject, use "update_component".
+7. Confirm success and report any errors.
 
 Guidance:
 - Use "update_gameobject" for creating GameObjects or changing their core properties.
 - Use "update_component" for adding or modifying components on an existing GameObject.
+- Use "get_scripts" to examine, analyze, or understand the C# scripts in the project.
+  - You can filter scripts by using the searchPattern parameter (e.g., *Player*.cs)
+  - You can include script content by setting includeContent=true
+  - Content size can be limited with maxFileSizeBytes parameter (default is 50000)
 - Always validate inputs and request clarification if the identifier is ambiguous.`
                 }
             },
