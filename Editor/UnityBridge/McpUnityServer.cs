@@ -239,6 +239,10 @@ namespace McpUnity.Unity
             // Register GetGameObjectResource
             GetGameObjectResource getGameObjectResource = new GetGameObjectResource();
             _resources.Add(getGameObjectResource.Name, getGameObjectResource);
+            
+            // Register GetScriptsResource
+            GetScriptsResource getScriptsResource = new GetScriptsResource();
+            _resources.Add(getScriptsResource.Name, getScriptsResource);
         }
         
         /// <summary>
